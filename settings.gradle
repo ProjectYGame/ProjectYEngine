@@ -1,2 +1,5 @@
 rootProject.name = 'ProjectY'
 
+include 'project-core'
+include 'project-server'
+include 'project-client'
