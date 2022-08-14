@@ -1,0 +1,21 @@
+plugins {
+	id 'java'
+}
+
+group 'net.projecty'
+version '0.1.0'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation group: 'org.jogamp.gluegen', name: 'gluegen-rt-main', version:'2.3.2'
+	implementation group: 'org.jogamp.jogl', name: 'jogl-all-main', version:'2.3.2'
+	implementation group: 'org.jogamp.joal', name: 'joal', version:'2.3.2'
+	implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version:'2.8.9'
+}
+
+test {
+	useJUnitPlatform()
+}
