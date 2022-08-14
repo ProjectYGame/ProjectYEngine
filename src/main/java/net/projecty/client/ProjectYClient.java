@@ -35,23 +35,16 @@ public class ProjectYClient implements GLEventListener {
 	}
 	
 	@Override
-	public void init(GLAutoDrawable drawable) {
-		System.out.println("Init");
-	}
+	public void init(GLAutoDrawable drawable) {}
 	
 	@Override
-	public void display(GLAutoDrawable drawable) {
-	
-	}
+	public void display(GLAutoDrawable drawable) {}
 	
 	@Override
-	public void reshape(GLAutoDrawable drawable, int x, int y, int width, int height) {
-	
-	}
+	public void reshape(GLAutoDrawable drawable, int x, int y, int width, int height) {}
 	
 	@Override
 	public void dispose(GLAutoDrawable drawable) {
-		System.out.println("Exit");
 		System.exit(0);
 	}
 }
