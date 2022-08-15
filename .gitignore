@@ -23,3 +23,8 @@ classes/
 bin/
 .classpath
 .project
+
+#logging
+
+logs/
+.log
