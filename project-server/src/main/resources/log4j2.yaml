@@ -1,0 +1,29 @@
+Configuration:
+  name: Log4jConfig
+  status: warn
+  thresholdFilter:
+    level: debug
+  appenders:
+    Console:
+      name: STDOUT
+      target: SYSTEM_OUT
+      PatternLayout:
+        Pattern: "%d{dd-MM-yyyy HH:mm:ss.SSS} [%p] %C{0} [%t] %m%n"
+    RollingRandomAccessFile:
+      name: FILE
+      fileName: logs/projectY-server.log
+      filePattern: logs/projectY-client-%d{dd-MM-yyyy}-%i.log.gz
+      PatternLayout:
+        Pattern: "%d{dd-MM-yyyy HH:mm:ss.SSS} [%p] %C{0} [%t] %m%n"
+      Policies:
+        SizeBasedTriggeringPolicy:
+          size: 5 MB
+      Filters:
+        ThresholdFilter:
+          level: debug
+  Loggers:
+    Root:
+      level: debug
+      AppenderRef:
+        - ref: STDOUT
+        - ref: FILE
