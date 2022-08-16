@@ -1,7 +1,7 @@
 package net.projecty.core.world.block;
 
-import net.projecty.core.world.block.state.properties.StateProperty;
 import net.projecty.core.world.block.state.BlockState;
+import net.projecty.core.world.block.state.properties.StateProperty;
 
 import java.util.Collection;
 import java.util.List;
