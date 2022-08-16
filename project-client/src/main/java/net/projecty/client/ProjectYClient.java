@@ -11,8 +11,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class ProjectYClient implements GLEventListener {
-
 	private static final Logger logger = LogManager.getLogger(ProjectYClient.class);
+	
 	public static void main(String[] args) {
 		new ProjectYClient();
 	}
