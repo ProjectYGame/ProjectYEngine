@@ -1,4 +1,4 @@
-package net.projecty.world.block.state.properties;
+package net.projecty.core.world.block.state.properties;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,7 +18,6 @@ public class IntegerProperty extends StateProperty<Integer> {
 		this.maxValue = maxValue;
 		this.count = maxValue - minValue + 1;
 		this.values = IntStream.rangeClosed(minValue, maxValue).boxed().collect(Collectors.toUnmodifiableList());
-		System.out.println(values.size() + " " + count);
 	}
 	
 	@Override

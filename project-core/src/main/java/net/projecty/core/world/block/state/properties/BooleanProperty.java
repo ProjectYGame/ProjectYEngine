@@ -1,4 +1,4 @@
-package net.projecty.world.block.state.properties;
+package net.projecty.core.world.block.state.properties;
 
 import java.util.List;
 

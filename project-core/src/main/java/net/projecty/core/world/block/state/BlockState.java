@@ -1,7 +1,7 @@
-package net.projecty.world.block.state;
+package net.projecty.core.world.block.state;
 
-import net.projecty.world.block.Block;
-import net.projecty.world.block.state.properties.StateProperty;
+import net.projecty.core.world.block.Block;
+import net.projecty.core.world.block.state.properties.StateProperty;
 
 import java.util.ArrayList;
 import java.util.HashMap;
