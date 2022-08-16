@@ -24,6 +24,12 @@ public abstract class StateProperty<T> {
 		return getIndex((T) obj);
 	}
 	
+	public abstract T parseValue(String value);
+	
+	public String toString(Object value) {
+		return value.toString();
+	}
+	
 	@Override
 	public String toString() {
 		return String.format("[%s:%s]", getName(), getType());

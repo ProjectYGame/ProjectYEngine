@@ -11,6 +11,11 @@ public class BooleanProperty extends StateProperty<Boolean> {
 	}
 	
 	@Override
+	public Boolean parseValue(String value) {
+		return Boolean.parseBoolean(value);
+	}
+	
+	@Override
 	public List<Boolean> getValues() {
 		return VALUES;
 	}

@@ -21,6 +21,11 @@ public class IntegerProperty extends StateProperty<Integer> {
 	}
 	
 	@Override
+	public Integer parseValue(String value) {
+		return Integer.parseInt(value);
+	}
+	
+	@Override
 	public List<Integer> getValues() {
 		return values;
 	}

@@ -1,4 +1,4 @@
-package net.projecty.core.registry;
+package net.projecty.core.world.block.registry;
 
 import net.projecty.core.utils.Identifier;
 
