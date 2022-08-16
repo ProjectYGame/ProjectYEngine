@@ -5,14 +5,12 @@ import java.util.Map;
 
 public class Identifier {
 	private static final Map<String, Identifier> CACHE = new HashMap<>();
-	private final String complete;
 	private final String root;
 	private final String path;
-	private final int hash;
+	private String complete;
+	private int hash;
 
 	private Identifier(String root, String path) {
-		this.complete = root + ":" + path;
-		this.hash = complete.hashCode();
 		this.root = root;
 		this.path = path;
 	}
@@ -27,11 +25,17 @@ public class Identifier {
 
 	@Override
 	public int hashCode() {
+		if (complete == null) {
+			hash = toString().hashCode();
+		}
 		return hash;
 	}
 
 	@Override
 	public String toString() {
+		if (complete == null) {
+			complete = root + ":" + path;
+		}
 		return complete;
 	}
 

@@ -1,4 +1,4 @@
-package net.projecty.world.block.state.properties;
+package net.projecty.core.world.block.state.properties;
 
 import java.util.List;
 
@@ -22,6 +22,12 @@ public abstract class StateProperty<T> {
 	
 	public int getCastedIndex(Object obj) {
 		return getIndex((T) obj);
+	}
+	
+	public abstract T parseValue(String value);
+	
+	public String toString(Object value) {
+		return value.toString();
 	}
 	
 	@Override

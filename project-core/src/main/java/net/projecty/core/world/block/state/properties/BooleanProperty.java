@@ -1,4 +1,4 @@
-package net.projecty.world.block.state.properties;
+package net.projecty.core.world.block.state.properties;
 
 import java.util.List;
 
@@ -8,6 +8,11 @@ public class BooleanProperty extends StateProperty<Boolean> {
 	
 	public BooleanProperty(String name) {
 		super(name);
+	}
+	
+	@Override
+	public Boolean parseValue(String value) {
+		return Boolean.parseBoolean(value);
 	}
 	
 	@Override
