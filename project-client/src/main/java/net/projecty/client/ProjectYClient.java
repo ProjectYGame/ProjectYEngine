@@ -7,6 +7,7 @@ import com.jogamp.opengl.GLCapabilities;
 import com.jogamp.opengl.GLEventListener;
 import com.jogamp.opengl.GLProfile;
 import com.jogamp.opengl.util.Animator;
+import net.projecty.client.utils.DisposeUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -54,6 +55,7 @@ public class ProjectYClient implements GLEventListener {
 	@Override
 	public void dispose(GLAutoDrawable drawable) {
 		logger.debug("ProjectYClient::dispose() - STOP APP");
+		DisposeUtil.disposeAll();
 		System.exit(0);
 	}
 }
