@@ -1,5 +1,7 @@
 package net.projecty.client.utils;
 
+import net.projecty.client.utils.disposable.Disposable;
+
 import java.util.ArrayList;
 import java.util.List;
 

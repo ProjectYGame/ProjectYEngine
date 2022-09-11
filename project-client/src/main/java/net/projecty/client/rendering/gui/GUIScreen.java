@@ -1,9 +1,13 @@
 package net.projecty.client.rendering.gui;
 
+import com.jogamp.opengl.FBObject;
+import com.jogamp.opengl.util.glsl.ShaderProgram;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class GUIScreen implements GUIElement {
+	protected static final ShaderProgram GUI_PROGRAM = new ShaderProgram();
 	private final List<GUIElement> elements = new ArrayList<>();
 	private final GUIScreen parent;
 	
