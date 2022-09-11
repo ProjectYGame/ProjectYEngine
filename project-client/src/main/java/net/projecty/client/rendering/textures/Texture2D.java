@@ -1,9 +1,9 @@
-package net.projecty.client.rendering.rendering.textures;
+package net.projecty.client.rendering.textures;
 
 import com.jogamp.opengl.GL;
 import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GLContext;
-import net.projecty.client.utils.Disposable;
+import net.projecty.client.utils.disposable.Disposable;
 import net.projecty.client.utils.DisposeUtil;
 
 import java.awt.image.BufferedImage;

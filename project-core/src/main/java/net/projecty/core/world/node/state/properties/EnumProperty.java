@@ -1,4 +1,4 @@
-package net.projecty.core.world.block.state.properties;
+package net.projecty.core.world.node.state.properties;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;

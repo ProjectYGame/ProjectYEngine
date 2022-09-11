@@ -1,9 +1,9 @@
-package net.projecty.core.world.block.state;
+package net.projecty.core.world.node.state;
 
 import net.projecty.core.utils.Identifier;
-import net.projecty.core.world.block.Block;
-import net.projecty.core.world.block.registry.DefaultRegistries;
-import net.projecty.core.world.block.state.properties.StateProperty;
+import net.projecty.core.world.node.GameNode;
+import net.projecty.core.world.node.registry.DefaultRegistries;
+import net.projecty.core.world.node.state.properties.StateProperty;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -11,34 +11,34 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public final class BlockState {
-	private static final Map<Block, BlockState[]> POSSIBLE_STATES = new HashMap<>();
+public final class NodeState {
+	private static final Map<GameNode, NodeState[]> POSSIBLE_STATES = new HashMap<>();
 	
 	private static int increment;
 	private static int index;
 	
 	private final Map<StateProperty<?>, Object> properties = new HashMap<>();
-	private final BlockState[] localCache;
-	private final Block block;
+	private final NodeState[] localCache;
+	private final GameNode node;
 	
-	private BlockState(Block block) {
-		this.localCache = POSSIBLE_STATES.computeIfAbsent(block, key -> {
+	private NodeState(GameNode node) {
+		this.localCache = POSSIBLE_STATES.computeIfAbsent(node, key -> {
 			List<StateProperty> properties = new ArrayList<>();
-			block.appendProperties(properties);
+			node.appendProperties(properties);
 			int size = 1;
 			for (StateProperty property: properties) size *= property.getCount();
-			block.setDefaultState(this);
+			node.setDefaultState(this);
 			properties.forEach(property -> this.properties.put(property, property.defaultValue()));
-			BlockState[] cache = new BlockState[size];
-			DefaultRegistries.BLOCKSTATES_MAP.add(this);
+			NodeState[] cache = new NodeState[size];
+			DefaultRegistries.NODESTATES_MAP.add(this);
 			cache[0] = this;
 			return cache;
 		});
-		this.block = block;
+		this.node = node;
 	}
 	
-	public <T> BlockState with(StateProperty<T> property, T value) {
-		if (!properties.containsKey(property)) throw new RuntimeException("No property " + property + " in block " + block);
+	public <T> NodeState with(StateProperty<T> property, T value) {
+		if (!properties.containsKey(property)) throw new RuntimeException("No property " + property + " in node " + node);
 		
 		index = 0;
 		increment = 1;
@@ -48,28 +48,28 @@ public final class BlockState {
 			increment *= prop.getCount();
 		});
 		
-		BlockState state = localCache[index];
+		NodeState state = localCache[index];
 		if (state == null) {
-			state = new BlockState(block);
+			state = new NodeState(node);
 			state.properties.putAll(properties);
 			state.properties.put(property, value);
 			localCache[index] = state;
-			DefaultRegistries.BLOCKSTATES_MAP.add(state);
+			DefaultRegistries.NODESTATES_MAP.add(state);
 		}
 		
 		return state;
 	}
 	
-	public Block getBlock() {
-		return block;
+	public GameNode getBlock() {
+		return node;
 	}
 	
-	public static BlockState getDefaultState(Block block) {
-		if (POSSIBLE_STATES.containsKey(block)) return POSSIBLE_STATES.get(block)[0];
-		return new BlockState(block);
+	public static NodeState getDefaultState(GameNode node) {
+		if (POSSIBLE_STATES.containsKey(node)) return POSSIBLE_STATES.get(node)[0];
+		return new NodeState(node);
 	}
 	
-	public List<BlockState> getPossibleStates() {
+	public List<NodeState> getPossibleStates() {
 		for (int i = 0; i < localCache.length; i++) {
 			if (localCache[i] == null) {
 				index = i;
@@ -81,9 +81,9 @@ public final class BlockState {
 					increment *= prop.getCount();
 				});
 				
-				BlockState state = localCache[index];
+				NodeState state = localCache[index];
 				if (state == null) {
-					state = new BlockState(block);
+					state = new NodeState(node);
 					state.properties.putAll(newProperties);
 					localCache[i] = state;
 				}
@@ -99,12 +99,12 @@ public final class BlockState {
 	}
 	
 	public String toNBTString() {
-		Identifier blockID = DefaultRegistries.BLOCK_REGISTRY.getID(block);
-		if (blockID == null) {
-			throw new RuntimeException("Block " + block + " is not in block registry!");
+		Identifier nodeID = DefaultRegistries.NODE_REGISTRY.getID(node);
+		if (nodeID == null) {
+			throw new RuntimeException("Block " + node + " is not in node registry!");
 		}
-		StringBuilder builder = new StringBuilder("block=");
-		builder.append(blockID);
+		StringBuilder builder = new StringBuilder("node=");
+		builder.append(nodeID);
 		index = 0;
 		final int max = properties.size();
 		if (max > 0) {
@@ -123,12 +123,12 @@ public final class BlockState {
 	}
 	
 	@Nullable
-	public static BlockState fromNBTString(String nbtString) {
+	public static NodeState fromNBTString(String nbtString) {
 		String[] parts = nbtString.split(",");
 		String name = parts[0];
-		Block block = DefaultRegistries.BLOCK_REGISTRY.get(Identifier.make(name.substring(6)));
-		if (block == null) return null;
-		BlockState state = getDefaultState(block);
+		GameNode node = DefaultRegistries.NODE_REGISTRY.get(Identifier.make(name.substring(6)));
+		if (node == null) return null;
+		NodeState state = getDefaultState(node);
 		for (int i = 1; i < parts.length; i++) {
 			String[] pair = parts[i].split("=");
 			StateProperty<?> property = state.getByName(pair[0]);
@@ -139,7 +139,7 @@ public final class BlockState {
 		return state;
 	}
 	
-	private <T> BlockState withCast(StateProperty<T> property, Object value) {
+	private <T> NodeState withCast(StateProperty<T> property, Object value) {
 		return with(property, (T) value);
 	}
 	

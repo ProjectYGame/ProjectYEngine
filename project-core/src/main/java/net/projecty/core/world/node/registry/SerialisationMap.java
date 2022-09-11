@@ -1,4 +1,4 @@
-package net.projecty.core.world.block.registry;
+package net.projecty.core.world.node.registry;
 
 import java.util.HashMap;
 import java.util.Map;

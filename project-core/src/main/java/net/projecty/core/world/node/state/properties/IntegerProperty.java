@@ -1,4 +1,4 @@
-package net.projecty.core.world.block.state.properties;
+package net.projecty.core.world.node.state.properties;
 
 import java.util.List;
 import java.util.stream.Collectors;
