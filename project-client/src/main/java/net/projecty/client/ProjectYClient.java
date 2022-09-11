@@ -7,19 +7,22 @@ import com.jogamp.opengl.GLCapabilities;
 import com.jogamp.opengl.GLEventListener;
 import com.jogamp.opengl.GLProfile;
 import com.jogamp.opengl.util.Animator;
+import net.projecty.client.rendering.gui.GUIMainMenu;
+import net.projecty.client.rendering.gui.GUIScreen;
 import net.projecty.client.utils.DisposeUtil;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import net.projecty.core.utils.LogUtil;
 
 public class ProjectYClient implements GLEventListener {
-	private static final Logger logger = LogManager.getLogger(ProjectYClient.class);
+	private GUIScreen screen;
+	private float delta;
+	private long time;
 	
 	public static void main(String[] args) {
 		new ProjectYClient();
 	}
 
 	private ProjectYClient() {
-		logger.debug("ProjectYClient::construct() - START");
+		LogUtil.debug("ProjectYClient::construct() - START");
 
 		GLCapabilities caps = new GLCapabilities(GLProfile.get(GLProfile.GL2GL3));
 		GLWindow glWindow = GLWindow.create(caps);
@@ -39,22 +42,32 @@ public class ProjectYClient implements GLEventListener {
 		Animator animator = new Animator();
 		animator.add(glWindow);
 		animator.start();
-
-		logger.debug("ProjectYClient::construct() - END");
+		
+		LogUtil.debug("ProjectYClient::construct() - END");
 	}
-
+	
 	@Override
-	public void init(GLAutoDrawable drawable) {}
-
+	public void init(GLAutoDrawable drawable) {
+		screen = new GUIMainMenu();
+		time = System.currentTimeMillis();
+	}
+	
 	@Override
-	public void display(GLAutoDrawable drawable) {}
-
+	public void display(GLAutoDrawable drawable) {
+		screen.render(time, delta);
+		long t = System.currentTimeMillis();
+		delta = (float) (t - time) / 1000F;
+		time = t;
+	}
+	
 	@Override
-	public void reshape(GLAutoDrawable drawable, int x, int y, int width, int height) {}
-
+	public void reshape(GLAutoDrawable drawable, int x, int y, int width, int height) {
+		screen.onResize(width, height);
+	}
+	
 	@Override
 	public void dispose(GLAutoDrawable drawable) {
-		logger.debug("ProjectYClient::dispose() - STOP APP");
+		LogUtil.debug("ProjectYClient::dispose() - STOP APP");
 		DisposeUtil.disposeAll();
 		System.exit(0);
 	}

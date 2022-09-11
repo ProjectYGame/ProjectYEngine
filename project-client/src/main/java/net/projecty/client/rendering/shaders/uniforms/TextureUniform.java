@@ -1,7 +1,7 @@
 package net.projecty.client.rendering.shaders.uniforms;
 
 import com.jogamp.opengl.GLContext;
-import net.projecty.client.rendering.rendering.textures.Texture2D;
+import net.projecty.client.rendering.textures.Texture2D;
 
 public class TextureUniform extends Uniform {
 	private Texture2D texture;

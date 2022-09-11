@@ -1,8 +1,8 @@
 package net.projecty.core.world.node.registry;
 
+import net.projecty.core.world.item.Item;
 import net.projecty.core.world.node.GameNode;
 import net.projecty.core.world.node.state.NodeState;
-import net.projecty.core.world.item.Item;
 
 public class DefaultRegistries {
 	public static final Registry<GameNode> NODE_REGISTRY = new Registry<>();

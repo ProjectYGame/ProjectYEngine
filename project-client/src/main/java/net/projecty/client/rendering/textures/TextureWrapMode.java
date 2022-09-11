@@ -1,4 +1,4 @@
-package net.projecty.client.rendering.rendering.textures;
+package net.projecty.client.rendering.textures;
 
 import com.jogamp.opengl.GL;
 

@@ -1,14 +1,6 @@
 package net.projecty.client.rendering.shaders;
 
-import com.jogamp.opengl.GL3;
-import com.jogamp.opengl.GLContext;
-import net.projecty.client.rendering.shaders.uniforms.Uniform;
 import net.projecty.client.utils.Disposable;
-import net.projecty.client.utils.DisposeUtil;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.function.Function;
 
 public class ShaderProgram implements Disposable {
 	/*private Map<String, Uniform> uniforms = new HashMap<>();

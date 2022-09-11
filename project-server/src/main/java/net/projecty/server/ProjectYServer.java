@@ -1,5 +1,6 @@
 package net.projecty.server;
 
+import net.projecty.core.utils.LogUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -11,6 +12,6 @@ public class ProjectYServer {
 	}
 	
 	private ProjectYServer() {
-		logger.debug("ProjectYServer - START");
+		LogUtil.debug("ProjectYServer - START");
 	}
 }

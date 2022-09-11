@@ -38,4 +38,14 @@ public class LogUtil {
 		info(message);
 		throw new RuntimeException(message);
 	}
+	
+	public static void debug(Object arg) {
+		LOGGER.debug(toString(arg));
+	}
+	
+	public static void debug(Object... args) {
+		for (Object obj: args) {
+			debug(obj);
+		}
+	}
 }

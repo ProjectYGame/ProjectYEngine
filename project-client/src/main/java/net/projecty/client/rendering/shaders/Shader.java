@@ -1,10 +1,6 @@
 package net.projecty.client.rendering.shaders;
 
-import com.jogamp.opengl.GL3;
-import com.jogamp.opengl.GLContext;
 import net.projecty.client.utils.Disposable;
-import net.projecty.client.utils.DisposeUtil;
-import net.projecty.client.utils.GLUtil;
 
 public class Shader implements Disposable {
 	//private final ShaderType type;
