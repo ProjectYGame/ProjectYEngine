@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.function.Function;
 
 public class ShaderProgram implements Disposable {
-	private Map<String, Uniform> uniforms = new HashMap<>();
+	/*private Map<String, Uniform> uniforms = new HashMap<>();
 	private final Shader[] shaders;
 	private final int id;
 	
@@ -56,13 +56,13 @@ public class ShaderProgram implements Disposable {
 	
 	public static void unbind() {
 		GLContext.getCurrentGL().getGL2ES2().glUseProgram(0);
-	}
+	}*/
 	
 	@Override
 	public void dispose() {
-		for (Shader shader: shaders) {
+		/*for (Shader shader: shaders) {
 			shader.dispose();
 		}
-		GLContext.getCurrentGL().getGL2ES2().glDeleteProgram(id);
+		GLContext.getCurrentGL().getGL2ES2().glDeleteProgram(id);*/
 	}
 }
