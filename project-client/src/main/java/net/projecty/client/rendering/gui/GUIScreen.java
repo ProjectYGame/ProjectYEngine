@@ -1,6 +1,5 @@
 package net.projecty.client.rendering.gui;
 
-import com.jogamp.opengl.FBObject;
 import com.jogamp.opengl.util.glsl.ShaderProgram;
 
 import java.util.ArrayList;

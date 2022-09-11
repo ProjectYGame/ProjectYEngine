@@ -24,6 +24,10 @@ public class LogUtil {
 		}
 	}
 	
+	public static void stackTrace() {
+		warn(System.err);
+	}
+	
 	public static void warn(Object arg) {
 		LOGGER.warn(toString(arg));
 	}

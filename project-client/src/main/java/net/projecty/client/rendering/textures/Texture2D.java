@@ -3,8 +3,8 @@ package net.projecty.client.rendering.textures;
 import com.jogamp.opengl.GL;
 import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GLContext;
-import net.projecty.client.utils.disposable.Disposable;
 import net.projecty.client.utils.DisposeUtil;
+import net.projecty.client.utils.disposable.Disposable;
 
 import java.awt.image.BufferedImage;
 import java.nio.ByteBuffer;

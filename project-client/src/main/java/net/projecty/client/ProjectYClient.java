@@ -7,13 +7,21 @@ import com.jogamp.opengl.GLCapabilities;
 import com.jogamp.opengl.GLEventListener;
 import com.jogamp.opengl.GLProfile;
 import com.jogamp.opengl.util.Animator;
+import net.projecty.client.game.ClientGame;
 import net.projecty.client.rendering.gui.GUIMainMenu;
 import net.projecty.client.rendering.gui.GUIScreen;
 import net.projecty.client.utils.DisposeUtil;
 import net.projecty.core.utils.LogUtil;
 
+import java.io.File;
+import java.util.Arrays;
+import java.util.List;
+
 public class ProjectYClient implements GLEventListener {
+	private ClientGame[] availableGames;
+	private ClientGame currentGame;
 	private GUIScreen screen;
+	
 	private float delta;
 	private long time;
 	
@@ -48,6 +56,7 @@ public class ProjectYClient implements GLEventListener {
 	
 	@Override
 	public void init(GLAutoDrawable drawable) {
+		loadGames();
 		screen = new GUIMainMenu();
 		time = System.currentTimeMillis();
 	}
@@ -70,5 +79,15 @@ public class ProjectYClient implements GLEventListener {
 		LogUtil.debug("ProjectYClient::dispose() - STOP APP");
 		DisposeUtil.disposeAll();
 		System.exit(0);
+	}
+	
+	private void loadGames() {
+		File root = new File("./games");
+		if (!root.exists()) root.mkdir();
+		List<File> files = Arrays.stream(root.listFiles()).filter(f -> f.isDirectory()).toList();
+		availableGames = new ClientGame[files.size()];
+		for (int i = 0; i < files.size(); i++) {
+			availableGames[i] = new ClientGame(files.get(i));
+		}
 	}
 }
