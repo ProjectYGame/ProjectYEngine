@@ -191,6 +191,22 @@ public class MathUtil {
 	public static int floor(double x) {
 		return x < 0 ? (int) x - 1 : (int) x;
 	}
+	
+	public static int round(float x) {
+		return floor(x + 0.5F);
+	}
+	
+	public static int round(double x) {
+		return floor(x + 0.5);
+	}
+	
+	public static int ceil(float x) {
+		return -floor(-x);
+	}
+	
+	public static int ceil(double x) {
+		return -floor(-x);
+	}
 
 	public static int abs(int x) {
 		return x < 0 ? -x : x;

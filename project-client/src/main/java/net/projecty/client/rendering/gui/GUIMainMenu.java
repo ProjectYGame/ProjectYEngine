@@ -26,11 +26,12 @@ public class GUIMainMenu extends GUIScreen {
 		
 		gl.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT);
 		
+		float halh = availableGames.length * 35F;
 		for (int i = 0; i < availableGames.length; i++) {
-			float offset = i * 70F;
+			float offset = i * 70F - halh;
 			gl2.glEnable(GL3.GL_TEXTURE_2D);
 			availableGames[i].getIcon().bind(gl);
-			blit(drawable, offset + 20, 20, 60, 60);
+			blit(drawable, offset + CENTER.x, CENTER.y - 30, 60, 60);
 		}
 	}
 	
