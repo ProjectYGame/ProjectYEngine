@@ -54,7 +54,7 @@ public class ProjectYClient implements GLEventListener {
 	
 	@Override
 	public void display(GLAutoDrawable drawable) {
-		screen.render(time, delta);
+		screen.render(drawable, time, delta);
 		long t = System.currentTimeMillis();
 		delta = (float) (t - time) / 1000F;
 		time = t;
@@ -62,7 +62,7 @@ public class ProjectYClient implements GLEventListener {
 	
 	@Override
 	public void reshape(GLAutoDrawable drawable, int x, int y, int width, int height) {
-		screen.onResize(width, height);
+		screen.onResize(drawable, width, height);
 	}
 	
 	@Override

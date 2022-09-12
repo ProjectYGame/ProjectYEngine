@@ -1,8 +1,8 @@
 package net.projecty.core.world.node.state;
 
+import net.projecty.core.registry.DefaultRegistries;
 import net.projecty.core.utils.Identifier;
 import net.projecty.core.world.node.GameNode;
-import net.projecty.core.world.node.registry.DefaultRegistries;
 import net.projecty.core.world.node.state.properties.StateProperty;
 
 import javax.annotation.Nullable;

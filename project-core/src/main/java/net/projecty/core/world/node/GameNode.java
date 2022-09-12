@@ -1,8 +1,8 @@
 package net.projecty.core.world.node;
 
+import net.projecty.core.registry.DefaultRegistries;
 import net.projecty.core.utils.Identifier;
 import net.projecty.core.utils.LogUtil;
-import net.projecty.core.world.node.registry.DefaultRegistries;
 import net.projecty.core.world.node.state.NodeState;
 import net.projecty.core.world.node.state.properties.StateProperty;
 
