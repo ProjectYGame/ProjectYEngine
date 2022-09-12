@@ -1,6 +1,7 @@
 package net.projecty.client.utils;
 
 import com.jogamp.opengl.GL;
+import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GL2ES2;
 import com.jogamp.opengl.GLContext;
 import com.jogamp.opengl.util.glsl.ShaderCode;
@@ -61,6 +62,11 @@ public class GLUtil {
 		return EMPTY;
 	}
 	
+	public static void setNearest(Texture texture) {
+		texture.setTexParameteri(getGL2ES2(), GL2.GL_TEXTURE_MAG_FILTER, GL2.GL_NEAREST);
+		texture.setTexParameteri(getGL2ES2(), GL2.GL_TEXTURE_MIN_FILTER, GL2.GL_NEAREST);
+	}
+	
 	static {
 		IntBuffer buffer = BufferUtil.createIntBuffer(4);
 		buffer.put(0);
@@ -79,5 +85,6 @@ public class GLUtil {
 			buffer, null
 		);
 		EMPTY = new Texture(getGL2ES2(), data);
+		setNearest(EMPTY);
 	}
 }
