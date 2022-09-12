@@ -1,5 +1,7 @@
 package net.projecty.client;
 
+import com.jogamp.newt.Display;
+import com.jogamp.newt.Display.PointerIcon;
 import com.jogamp.newt.Screen;
 import com.jogamp.newt.opengl.GLWindow;
 import com.jogamp.opengl.GLAutoDrawable;
@@ -23,12 +25,14 @@ public class ProjectYClient implements GLEventListener {
 
 	private ProjectYClient() {
 		LogUtil.debug("ProjectYClient::construct() - START");
-
+		
+		System.setProperty("newt.window.icons", "icons/icon-32.png,icons/icon-64.png,icons/icon-128.png");
+		
 		GLCapabilities caps = new GLCapabilities(GLProfile.get(GLProfile.GL2GL3));
 		GLWindow glWindow = GLWindow.create(caps);
 
 		glWindow.setTitle("Project Y");
-		glWindow.setSize(800, 600);
+		glWindow.setSize(960, 540);
 		glWindow.setUndecorated(false);
 		glWindow.setPointerVisible(true);
 		glWindow.setVisible(true);

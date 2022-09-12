@@ -15,9 +15,7 @@ public class LogUtil {
 	}
 	
 	public static void info(Object arg) {
-		String message = toString(arg);
-		LOGGER.info(message);
-		LOGGER.debug(message);
+		LOGGER.info(toString(arg));
 	}
 	
 	public static void info(Object... args) {
@@ -31,9 +29,7 @@ public class LogUtil {
 	}
 	
 	public static void warn(Object arg) {
-		String message = toString(arg);
-		LOGGER.warn(message);
-		LOGGER.debug(message);
+		LOGGER.warn(toString(arg));
 	}
 	
 	public static void warn(Object... args) {
