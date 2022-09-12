@@ -59,7 +59,7 @@ public class ProjectYClient implements GLEventListener {
 	@Override
 	public void init(GLAutoDrawable drawable) {
 		screen = new GUIMainMenu();
-		time = System.currentTimeMillis();
+		time = System.nanoTime();
 		//drawable.getGL().setSwapInterval(1); // V-Sync
 		drawable.getGL().setSwapInterval(0);
 	}
@@ -84,8 +84,8 @@ public class ProjectYClient implements GLEventListener {
 	}
 	
 	private void updateTime() {
-		long t = System.currentTimeMillis();
-		delta = (float) (t - time) / 1000F;
+		long t = System.nanoTime();
+		delta = (float) (t - time) / 1000000000F;
 		time = t;
 	}
 	

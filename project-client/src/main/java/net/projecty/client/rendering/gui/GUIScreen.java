@@ -69,7 +69,7 @@ public abstract class GUIScreen implements GUIElement {
 		TextRenderer text = GLUtil.getDefaultText();
 		text.beginRendering(SIZE.x, SIZE.y);
 		text.draw("FPS: " + client.getAverageFPS(), 10, SIZE.y - 20);
-		text.draw("Delta: " + client.getAverageDelta(), 10, SIZE.y - 40);
+		text.draw(String.format("Delta: %.4f", client.getAverageDelta()), 10, SIZE.y - 40);
 		text.endRendering();
 	}
 }
