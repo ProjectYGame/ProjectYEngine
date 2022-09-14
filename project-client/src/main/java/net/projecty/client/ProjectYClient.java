@@ -60,8 +60,8 @@ public class ProjectYClient implements GLEventListener {
 	public void init(GLAutoDrawable drawable) {
 		screen = new GUIMainMenu();
 		time = System.nanoTime();
-		//drawable.getGL().setSwapInterval(1); // V-Sync
-		drawable.getGL().setSwapInterval(0);
+		drawable.getGL().setSwapInterval(1); // V-Sync
+		//drawable.getGL().setSwapInterval(0);
 	}
 	
 	@Override
@@ -104,7 +104,7 @@ public class ProjectYClient implements GLEventListener {
 	}
 	
 	public float getAverageDelta() {
-		return delta;
+		return averageDelta;
 	}
 	
 	public static ProjectYClient getInstance() {

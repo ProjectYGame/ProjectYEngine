@@ -24,7 +24,7 @@ import java.io.IOException;
 import java.nio.IntBuffer;
 
 public class GLUtil {
-	private static final TextRenderer DEFAULT_TEXT = makeTextRenderer(new Font("Monospaced", Font.PLAIN, 24));
+	private static final TextRenderer DEFAULT_TEXT = makeTextRenderer(TextUtil.getDefaultFont());
 	private static final Texture EMPTY;
 	
 	public static GL2ES2 getGL2ES2() {
